@@ -43,3 +43,6 @@ pytest --headed
 # 실행 속도 조절
 pytest --headed --slowmo=1000 
 ```
+
+## Test Case
+https://docs.google.com/spreadsheets/d/1YH8JFLgbjMw6LqD9XAyePEy2DqwDlM59IS2Y_gXBKso/edit?usp=sharing
