@@ -37,10 +37,6 @@ def test_TC_PRODUCT_SORT_004(products_page: ProductsPage):
     assert prices == sorted(prices, reverse=True)
 
 
-def test_product_count(products_page: ProductsPage):
-    expect(products_page.inventory_items).to_have_count(6)
-
-
 def test_TC_PRODUCT_DISPLAY_001(products_page: ProductsPage):
     names = products_page.get_all_names()
     assert len(names) == 6
@@ -64,6 +60,10 @@ def test_TC_PRODUCT_DISPLAY_003(products_page: ProductsPage):
     assert len(prices) == 6
     for price in prices:
         assert price > 0
+
+
+def test_TC_PRODUCT_DISPLAY_004(products_page: ProductsPage):
+    expect(products_page.inventory_items).to_have_count(6)
 
 
 def test_TC_PRODUCT_CART_001(products_page: ProductsPage):
@@ -105,4 +105,3 @@ def test_TC_PRODUCT_DETAIL_001(products_page: ProductsPage):
 
     products_page.page.wait_for_url("**/inventory-item.html?id=4")
     assert products_page.get_url().endswith("/inventory-item.html?id=4")
-

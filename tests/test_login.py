@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, expect
 
 from pages.login_page import LoginPage
+from pages.products_page import ProductsPage
 from tests import constant
 
 
@@ -56,3 +57,11 @@ def test_TC_LOGIN_008(login_page: LoginPage):
 def test_TC_LOGIN_009(login_page: LoginPage):
     login_page.login("locked_out_user", constant.PASSWORD)
     login_page.verify_error_message(constant.LOCK_ERROR_MESSAGE)
+
+
+def test_TC_LOGIN_010(products_page: ProductsPage):
+    products_page.burger_menu.click()
+    products_page.logout_button.click()
+
+    products_page.page.wait_for_url("")
+    assert products_page.get_url().endswith("")

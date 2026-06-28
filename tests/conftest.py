@@ -17,9 +17,9 @@ def login_page(page: Page):
     return LoginPage(page)
 
 
-@pytest.fixture()
-def logged_in_page(login_page: LoginPage):
-    login_page.login("standard_user", constant.PASSWORD)
+@pytest.fixture(params=["standard_user", "problem_user"])
+def logged_in_page(request, login_page: LoginPage):
+    login_page.login(request.param, constant.PASSWORD)
 
     return login_page.page
 
